@@ -1,12 +1,3 @@
-#!/bin/bash
-
-# GitHub API URL
-API_URL="https://api.github.com"
-
-# GitHub username and personal access token
-USERNAME=$username
-TOKEN=$token
-
 # User and Repository information
 REPO_OWNER=$1
 REPO_NAME=$2
@@ -36,7 +27,16 @@ function list_users_with_read_access {
     fi
 }
 
-# Main script
+# Function which helps the users to execute with proper arguments
 
+function helper_fun {
+        expected_args=2
+        if [[ $# -ne expected_args ]]; then
+                echo "Please execute the script with correct number of arguments"
+        fi
+}
+
+# Main script
+helper_fun
 echo "Listing users with read access to ${REPO_OWNER}/${REPO_NAME}..."
 list_users_with_read_access
